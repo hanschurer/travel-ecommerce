@@ -3,19 +3,29 @@ import { GlobalOutlined } from "@ant-design/icons";
 import logo from "../../assets/logo.svg";
 import React from "react";
 import styles from "./Header.module.css";
-
+import {
+  useHistory,
+  useLocation,
+  useParams,
+  useRouteMatch,
+} from "react-router-dom";
 export const Header = () => {
+  const history = useHistory();
+  const location = useLocation();
+  const path = useParams();
+  const match = useRouteMatch();
+
   return (
     <div className={styles["app-header"]}>
       {/* {top-header} */}
       <div className={styles["top-header"]}>
         <div className={styles.inner}>
-          <Typography.Text> 溜了溜了</Typography.Text>
+          <Typography.Text> 溜了,溜了</Typography.Text>
           <Dropdown.Button
             style={{ marginLeft: 15 }}
             overlay={
               <Menu>
-                <Menu.Item>Chinese</Menu.Item>
+                <Menu.Item>中文</Menu.Item>
                 <Menu.Item>English</Menu.Item>
               </Menu>
             }
@@ -25,17 +35,19 @@ export const Header = () => {
           </Dropdown.Button>
 
           <Button.Group className={styles["button-group"]}>
-            <Button>注册</Button>
-            <Button>登录</Button>
+            <Button onClick={() => history.push("register")}>注册</Button>
+            <Button onClick={() => history.push("signIn")}>登录</Button>
           </Button.Group>
         </div>
       </div>
 
       <Layout.Header className={styles["main-header"]}>
-        <img src={logo} alt="" className={styles["App-logo"]} />
-        <Typography.Title level={3} className={styles.title}>
-          溜溜旅游网
-        </Typography.Title>
+        <span onClick={() => history.push("/")}>
+          <img src={logo} alt="" className={styles["App-logo"]} />
+          <Typography.Title level={3} className={styles.title}>
+            溜溜旅游网
+          </Typography.Title>
+        </span>
         <Input.Search
           className={styles["search-input"]}
           placeholder={"请输入你要润的目的地，主题，或关键字"}
@@ -62,4 +74,3 @@ export const Header = () => {
     </div>
   );
 };
-

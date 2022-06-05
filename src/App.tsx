@@ -1,12 +1,20 @@
 import React from "react";
 import styles from "./App.module.css";
-import { Header, Footer } from "./components";
+import { HomePage,RegisterPage,SignInPage,DetailPage } from "./pages";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
     <div className={styles.App}>
-      <Header />
-      <Footer />
+      <BrowserRouter>
+      <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route path="/signIn" component={SignInPage} />
+      <Route path="/register" component={RegisterPage} />
+      <Route path="/detail/:touristRouteId" component={DetailPage} />
+      <Route render={()=><h1>404 not found</h1>} />
+      </Switch>
+      </BrowserRouter>
     </div>
   );
 }
