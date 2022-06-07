@@ -59,10 +59,10 @@ export const Header = () => {
             {language === "zh" ? "中文" : "English"}
           </Dropdown.Button>
           <Button.Group className={styles["button-group"]}>
-            <Button onClick={() => history.push("register")}>
+            <Button onClick={() => history.push("/register")}>
               {t("header.register")}
             </Button>
-            <Button onClick={() => history.push("signIn")}>
+            <Button onClick={() => history.push("/signIn")}>
               {t("header.signin")}
             </Button>
           </Button.Group>
@@ -78,6 +78,7 @@ export const Header = () => {
         <Input.Search
           placeholder={"请输入旅游目的地、主题、或关键字"}
           className={styles["search-input"]}
+          onSearch={(keywrods)=>history.push("/search/"+keywrods)}
         />
       </Layout.Header>
       <Menu mode={"horizontal"} className={styles["main-menu"]}>
