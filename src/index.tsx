@@ -5,12 +5,17 @@ import App from "./App";
 import "antd/dist/antd.css";
 import "./i18n/configs";
 import { Provider } from "react-redux";
-import store from "./redux/store";
+import rootStore from "./redux/store";
+import {PersistGate} from "redux-persist/integration/react"
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={rootStore.store}>
+      <PersistGate loading={null} persistor={rootStore.persistor}>
       <App />
+      </PersistGate>
+      
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

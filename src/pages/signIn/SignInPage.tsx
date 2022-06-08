@@ -1,13 +1,11 @@
-import React from 'react'
-import { UserLayout } from '../../layouts/userLayout'
+import React from "react";
+import { UserLayout } from "../../layouts/userLayout";
+import { SignInForm } from "./SignInForm";
 
-export const SignInPage = (props) => {
-
+export const SignInPage: React.FC = (props) => {
   return (
     <UserLayout>
-
-      <div>SignInPage</div>
+      <SignInForm />
     </UserLayout>
-    
-  )
-}
+  );
+};
